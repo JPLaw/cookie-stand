@@ -11,11 +11,11 @@ var pikeAndFirst = {
   dailySales: [],
 
   randomNumber : function() {
-    for(var = i; i < storeHours.length; i++)
-    this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+    for(var i = 0; i < storeHours.length; i++)
+      this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
   },
 
-  cookieSalesPerHour: function() {
+  cookieSales: function() {
     for(var i = 0; i < storeHours.length; i++){
       var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
       this.cookiesPerHour[i] = numberSold;
@@ -35,37 +35,8 @@ var pikeAndFirst = {
       // parentElement.appendChild(childElement);
       ulElement.appendChild(listItemEl);
     }
-
+  }
+};
 pikeAndFirst.randomNumber();
 pikeAndFirst.cookieSalesPerHour();
 pikeAndFirst.renderSales();
-
-
-  //function for cookie sales per hour
-  // cookieSalesPerHour: function() {
-  // for(var i = 0; i < storeHours.length; i++){
-  //   var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
-  //   this.cookiesPerHour[i] = numberSold;
-  //   this.dailySales += numberSold;
-  // }
-}
-// renderSales: function() {
-//   // access the parent element from the DOM
-//   var ulElement = document.getElementById('pike');
-//   for( var i = 0; i < storeHours.length; i++) {
-//     this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomer - this.minClientPerHour)) + this.minClientPerHour;
-//     // 1. create element
-//     var listItemEl = document.createElement('li');
-//     // 2. give it content
-//     listItemEl.textContent = storeHours[i] + ': ' + this.sales[i];
-//     // 3. append it to the DOM
-//     // parentElement.appendChild(childElement);
-//     ulElement.appendChild(listItemEl);
-//   }
-}
-// pikeAndFirst.renderSales();
-
-randomNumber : function() {
-  for(var = i; i < storeHours.length; i++)
-  this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
-}
