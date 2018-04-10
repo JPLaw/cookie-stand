@@ -51,7 +51,6 @@ ulElement.appendChild(listItemEl);
 
 
 
-
 //SEATAC LOCATION
 var seaTac = {
   minCustomers: 3,
@@ -76,7 +75,7 @@ var seaTac = {
 
   renderSales: function() {
     // access the parent element from the DOM
-    var ulElement = document.getElementById('SeaTac');
+    var ulElement = document.getElementById('seaTac');
     for( var i = 0; i < storeHours.length; i++) {
       // 1. create element
       var listItemEl = document.createElement('li');
@@ -165,7 +164,7 @@ var capitolHill = {
   },
 
   renderSales: function() {
-    var ulElement = document.getElementById('seattleCenter');
+    var ulElement = document.getElementById('capitolHill');
     for(var i = 0; i < storeHours.length; i++){
       var listItemEl = document.createElement('li');
       listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
@@ -173,9 +172,9 @@ var capitolHill = {
     }
   }
 };
-seattleCenter.randomNumber();
-seattleCenter.cookiesSales();
-seattleCenter.renderSales();
+capitolHill.randomNumber();
+capitolHill.cookieSales();
+capitolHill.renderSales();
 
 //total cookies function
 
