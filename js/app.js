@@ -43,13 +43,14 @@ pikeAndFirst.randomNumber();
 pikeAndFirst.cookieSales();
 pikeAndFirst.renderSales();
 
+//total cookies function
 var ulElement = document.getElementById('pikeAndFirst');
 var listItemEl = document.createElement('li');
 listItemEl.textContent = 'Total Sold: ' + Math.floor(pikeAndFirst.dailySales);
 ulElement.appendChild(listItemEl);
 
 
-//total cookies function
+
 
 //SEATAC LOCATION
 var seaTac = {
@@ -132,3 +133,10 @@ var seattleCenter = {
 seattleCenter.randomNumber();
 seattleCenter.cookiesSales();
 seattleCenter.renderSales();
+
+//total cookies function
+var ulElement = document.getElementById('seattleCenter');
+var listItemEl = document.createElement('li');
+listItemEl.textContent = 'Total sold: ' + Math.floor(seattleCenter.dailySales);
+ulElement.appendChild(listItemEl);
+
