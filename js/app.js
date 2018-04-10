@@ -75,7 +75,7 @@ var seaTac = {
 
   renderSales: function() {
     // access the parent element from the DOM
-    var ulElement2 = document.getElementById('seaTac');
+    var ulElement = document.getElementById('seaTac');
     for( var i = 0; i < storeHours.length; i++) {
       // 1. create element
       var listItemEl = document.createElement('li');
@@ -83,7 +83,7 @@ var seaTac = {
       listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
       // 3. append it to the DOM
       // parentElement.appendChild(childElement);
-      ulElement2.appendChild(listItemEl2);
+      ulElement.appendChild(listItemEl);
     }
   }
 };
