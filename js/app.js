@@ -11,10 +11,31 @@ var pikeAndFirst = {
   cookiesPerHour: [],
   customerPerHour: [],
   dailySales: 0,
+}
+
+function Cookies(minCustomers, maxCustomers, averageCookiesPerCustomer, storeLocation) {
+  this.minCustomers = minCustomers;
+  this.maxCustomers = maxCustomers;
+  this.averageCookiesPerCustomer = averageCookiesPerCustomer;
+  this.dailySales = 0;
+  this.storeName = storeLocation;
+}
+
+Cookies.prototype.randomNumber = function() {
+  return this.maxCustomers * this.maxCustomers;
+}
+
+var pikeAndFirstLocation = new Cookies(23, 65, 6.3)
+var seattleAirportLocation = new Cookies(3, 24, 1.2);
+var seattleCenterLocation = new Cookies(11, 38, 3.7);
+var capitolHillLocation = new Cookies(20, 38, 2.3);
+var alkiLocation = new Cookies(2, 16, 4.6);
+
 
   randomNumber: function() {
-    for(var i = 0; i < storeHours.length; i++)
+    for(var i = 0; i < storeHours.length; i++) {
       this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+    }
   },
 
   cookieSales: function() {
@@ -39,6 +60,7 @@ var pikeAndFirst = {
     }
   }
 };
+
 pikeAndFirst.randomNumber();
 pikeAndFirst.cookieSales();
 pikeAndFirst.renderSales();
@@ -51,176 +73,176 @@ ulElement.appendChild(listItemEl);
 
 
 
-//SEATAC LOCATION
-var seaTac = {
-  minCustomers: 3,
-  maxCustomers: 24,
-  averageCookiesPerCustomer: 1.2,
-  cookiesPerHour: [],
-  customerPerHour: [],
-  dailySales: 0,
+// //SEATAC LOCATION
+// var seaTac = {
+//   minCustomers: 3,
+//   maxCustomers: 24,
+//   averageCookiesPerCustomer: 1.2,
+//   cookiesPerHour: [],
+//   customerPerHour: [],
+//   dailySales: 0,
 
-  randomNumber: function() {
-    for(var i = 0; i < storeHours.length; i++)
-      this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
-  },
+//   randomNumber: function() {
+//     for(var i = 0; i < storeHours.length; i++)
+//       this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+//   },
 
-  cookieSales: function() {
-    for(var i = 0; i < storeHours.length; i++){
-      var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
-      this.cookiesPerHour[i] = numberSold;
-      this.dailySales += numberSold;
-    }
-  },
+//   cookieSales: function() {
+//     for(var i = 0; i < storeHours.length; i++){
+//       var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
+//       this.cookiesPerHour[i] = numberSold;
+//       this.dailySales += numberSold;
+//     }
+//   },
 
-  renderSales: function() {
-    // access the parent element from the DOM
-    var ulElement = document.getElementById('seaTac');
-    for( var i = 0; i < storeHours.length; i++) {
-      // 1. create element
-      var listItemEl = document.createElement('li');
-      // 2. give it content
-      listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
-      // 3. append it to the DOM
-      // parentElement.appendChild(childElement);
-      ulElement.appendChild(listItemEl);
-    }
-  }
-};
+//   renderSales: function() {
+//     // access the parent element from the DOM
+//     var ulElement = document.getElementById('seaTac');
+//     for( var i = 0; i < storeHours.length; i++) {
+//       // 1. create element
+//       var listItemEl = document.createElement('li');
+//       // 2. give it content
+//       listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
+//       // 3. append it to the DOM
+//       // parentElement.appendChild(childElement);
+//       ulElement.appendChild(listItemEl);
+//     }
+//   }
+// };
 
-seaTac.randomNumber();
-seaTac.cookieSales();
-seaTac.renderSales();
+// seaTac.randomNumber();
+// seaTac.cookieSales();
+// seaTac.renderSales();
 
-// total sales function
-ulElement = document.getElementById('seaTac');
-listItemEl = document.createElement('li');
-listItemEl.textContent = 'Total Sold: ' + Math.floor(seaTac.dailySales);
-ulElement.appendChild(listItemEl);
-
-
-//SEATTLE CENTER LOCATION
-var seattleCenter = {
-  minCustomers: 11,
-  maxCustomers: 38,
-  averageCookiesPerCustomer: 3.7,
-  cookiesPerHour: [],
-  customerPerHour: [],
-  dailySales: 0,
-
-  randomNumber: function() {
-    for(var i = 0; i < storeHours.length; i++)
-      this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
-  },
-
-  cookiesSales: function() {
-    for(var i = 0; i < storeHours.length; i++){
-      var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer; this.cookiesPerHour[i] = numberSold;
-      this.dailySales += numberSold;
-    }
-  },
-
-  renderSales: function(){
-    var ulElement = document.getElementById('seattleCenter');
-    for(var i = 0; i < storeHours.length; i++){
-      var listItemEl = document.createElement('li');
-      listItemEl.textContent = storeHours[i] + ':' + Math.round(this.cookiesPerHour[i]);
-      ulElement.appendChild(listItemEl);
-    }
-  }
-};
-
-seattleCenter.randomNumber();
-seattleCenter.cookiesSales();
-seattleCenter.renderSales();
-
-//total cookies function
-ulElement = document.getElementById('seattleCenter');
-listItemEl = document.createElement('li');
-listItemEl.textContent = 'Total sold: ' + Math.floor(seattleCenter.dailySales);
-ulElement.appendChild(listItemEl);
+// // total sales function
+// ulElement = document.getElementById('seaTac');
+// listItemEl = document.createElement('li');
+// listItemEl.textContent = 'Total Sold: ' + Math.floor(seaTac.dailySales);
+// ulElement.appendChild(listItemEl);
 
 
-//CAPITOL HILL LOCATION
-var capitolHill = {
-  minCustomers: 20,
-  maxCustomers: 38,
-  averageCookiesPerCustomer: 2.3,
-  cookiesPerHour: [],
-  customerPerHour: [],
-  dailySales: 0,
+// //SEATTLE CENTER LOCATION
+// var seattleCenter = {
+//   minCustomers: 11,
+//   maxCustomers: 38,
+//   averageCookiesPerCustomer: 3.7,
+//   cookiesPerHour: [],
+//   customerPerHour: [],
+//   dailySales: 0,
 
-  randomNumber: function() {
-    for (var i = 0; i < storeHours.length; i++)
-      this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
-  },
+//   randomNumber: function() {
+//     for(var i = 0; i < storeHours.length; i++)
+//       this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+//   },
 
-  cookieSales: function() {
-    for(var i = 0; i < storeHours.length; i++){
-      var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
-      this.cookiesPerHour[i] = numberSold;
-      this.dailySales += numberSold;
-    }
-  },
+//   cookiesSales: function() {
+//     for(var i = 0; i < storeHours.length; i++){
+//       var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer; this.cookiesPerHour[i] = numberSold;
+//       this.dailySales += numberSold;
+//     }
+//   },
 
-  renderSales: function() {
-    var ulElement = document.getElementById('capitolHill');
-    for(var i = 0; i < storeHours.length; i++){
-      var listItemEl = document.createElement('li');
-      listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
-      ulElement.appendChild(listItemEl);
-    }
-  }
-};
-capitolHill.randomNumber();
-capitolHill.cookieSales();
-capitolHill.renderSales();
+//   renderSales: function(){
+//     var ulElement = document.getElementById('seattleCenter');
+//     for(var i = 0; i < storeHours.length; i++){
+//       var listItemEl = document.createElement('li');
+//       listItemEl.textContent = storeHours[i] + ':' + Math.round(this.cookiesPerHour[i]);
+//       ulElement.appendChild(listItemEl);
+//     }
+//   }
+// };
 
-//total cookies function
+// seattleCenter.randomNumber();
+// seattleCenter.cookiesSales();
+// seattleCenter.renderSales();
 
-ulElement = document.getElementById('capitolHill');
-listItemEl = document.createElement('li');
-listItemEl.textContent = 'Total Sold: ' + Math.floor(capitolHill.dailySales);
-ulElement.appendChild(listItemEl);
+// //total cookies function
+// ulElement = document.getElementById('seattleCenter');
+// listItemEl = document.createElement('li');
+// listItemEl.textContent = 'Total sold: ' + Math.floor(seattleCenter.dailySales);
+// ulElement.appendChild(listItemEl);
 
-//ALKI LOCATION
-var alki = {
-  minCustomers: 2,
-  maxCustomers: 16,
-  averageCookiesPerCustomer: 4.6,
-  cookiesPerHour: [],
-  customerPerHour: [],
-  dailySales: 0,
 
-  randomNumber: function() {
-    for (var i = 0; i < storeHours.length; i++)
-      this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
-  },
+// //CAPITOL HILL LOCATION
+// var capitolHill = {
+//   minCustomers: 20,
+//   maxCustomers: 38,
+//   averageCookiesPerCustomer: 2.3,
+//   cookiesPerHour: [],
+//   customerPerHour: [],
+//   dailySales: 0,
 
-  cookieSales: function() {
-    for(var i = 0; i < storeHours.length; i++){
-      var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
-      this.cookiesPerHour[i] = numberSold;
-      this.dailySales += numberSold;
-    }
-  },
+//   randomNumber: function() {
+//     for (var i = 0; i < storeHours.length; i++)
+//       this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+//   },
 
-  renderSales: function() {
-    var ulElement = document.getElementById('alki');
-    for(var i = 0; i < storeHours.length; i++){
-      var listItemEl = document.createElement('li');
-      listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
-      ulElement.appendChild(listItemEl);
-    }
-  }
-};
-alki.randomNumber();
-alki.cookieSales();
-alki.renderSales();
+//   cookieSales: function() {
+//     for(var i = 0; i < storeHours.length; i++){
+//       var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
+//       this.cookiesPerHour[i] = numberSold;
+//       this.dailySales += numberSold;
+//     }
+//   },
 
-//total cookies function
+//   renderSales: function() {
+//     var ulElement = document.getElementById('capitolHill');
+//     for(var i = 0; i < storeHours.length; i++){
+//       var listItemEl = document.createElement('li');
+//       listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
+//       ulElement.appendChild(listItemEl);
+//     }
+//   }
+// };
+// capitolHill.randomNumber();
+// capitolHill.cookieSales();
+// capitolHill.renderSales();
 
-ulElement = document.getElementById('alki');
-listItemEl = document.createElement('li');
-listItemEl.textContent = 'Total Sold: ' + Math.floor(alki.dailySales);
-ulElement.appendChild(listItemEl);
+// //total cookies function
+
+// ulElement = document.getElementById('capitolHill');
+// listItemEl = document.createElement('li');
+// listItemEl.textContent = 'Total Sold: ' + Math.floor(capitolHill.dailySales);
+// ulElement.appendChild(listItemEl);
+
+// //ALKI LOCATION
+// var alki = {
+//   minCustomers: 2,
+//   maxCustomers: 16,
+//   averageCookiesPerCustomer: 4.6,
+//   cookiesPerHour: [],
+//   customerPerHour: [],
+//   dailySales: 0,
+
+//   randomNumber: function() {
+//     for (var i = 0; i < storeHours.length; i++)
+//       this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+//   },
+
+//   cookieSales: function() {
+//     for(var i = 0; i < storeHours.length; i++){
+//       var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
+//       this.cookiesPerHour[i] = numberSold;
+//       this.dailySales += numberSold;
+//     }
+//   },
+
+//   renderSales: function() {
+//     var ulElement = document.getElementById('alki');
+//     for(var i = 0; i < storeHours.length; i++){
+//       var listItemEl = document.createElement('li');
+//       listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
+//       ulElement.appendChild(listItemEl);
+//     }
+//   }
+// };
+// alki.randomNumber();
+// alki.cookieSales();
+// alki.renderSales();
+
+// //total cookies function
+
+// ulElement = document.getElementById('alki');
+// listItemEl = document.createElement('li');
+// listItemEl.textContent = 'Total Sold: ' + Math.floor(alki.dailySales);
+// ulElement.appendChild(listItemEl);
