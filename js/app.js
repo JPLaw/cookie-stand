@@ -7,10 +7,10 @@ var pikeAndFirst = {
   minCustomers: 23,
   maxCustomers: 65,
   averageCookiesPerCustomer: 6.3,
-  cookieSalesPerHour: [],
-  dailySales: [],
-
-  randomNumber : function() {
+  cookiesPerHour: [],
+  customerPerHour: [],
+  dailySales: 0,
+  randomNumber: function() {
     for(var i = 0; i < storeHours.length; i++)
       this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
   },
@@ -25,12 +25,12 @@ var pikeAndFirst = {
 
   renderSales: function() {
     // access the parent element from the DOM
-    var ulElement = document.getElementById('pike');
+    var ulElement = document.getElementById('pikeAndFirst');
     for( var i = 0; i < storeHours.length; i++) {
       // 1. create element
       var listItemEl = document.createElement('li');
       // 2. give it content
-      listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.sales[i]);
+      listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
       // 3. append it to the DOM
       // parentElement.appendChild(childElement);
       ulElement.appendChild(listItemEl);
@@ -38,5 +38,6 @@ var pikeAndFirst = {
   }
 };
 pikeAndFirst.randomNumber();
-pikeAndFirst.cookieSalesPerHour();
+pikeAndFirst.cookieSales();
 pikeAndFirst.renderSales();
+console.log(pikeAndFirst.dailySales)
