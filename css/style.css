@@ -1,4 +1,11 @@
 b {
   background-color: darkslategrey;
-}
+};
 
+h4 {
+  font-family: font-family: 'Arimo', sans-serif;
+};
+
+ul { 
+  font-family: 'Playfair Display', serif; 
+};
