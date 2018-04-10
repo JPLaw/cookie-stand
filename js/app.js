@@ -40,4 +40,4 @@ var pikeAndFirst = {
 pikeAndFirst.randomNumber();
 pikeAndFirst.cookieSales();
 pikeAndFirst.renderSales();
-console.log(pikeAndFirst.dailySales)
+
