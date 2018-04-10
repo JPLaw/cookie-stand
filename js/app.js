@@ -76,15 +76,15 @@ var seaTac = {
 
   renderSales: function() {
     // access the parent element from the DOM
-    var ulElement2 = document.getElementById('SeaTac');
+    var ulElement = document.getElementById('SeaTac');
     for( var i = 0; i < storeHours.length; i++) {
       // 1. create element
-      var listItemEl2 = document.createElement('li');
+      var listItemEl = document.createElement('li');
       // 2. give it content
-      listItemEl2.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
+      listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
       // 3. append it to the DOM
       // parentElement.appendChild(childElement);
-      ulElement2.appendChild(listItemEl2);
+      ulElement.appendChild(listItemEl);
     }
   }
 };
@@ -93,10 +93,11 @@ seaTac.randomNumber();
 seaTac.cookieSales();
 seaTac.renderSales();
 
-// var ulElement2 = document.getElementById('seaTac');
-// var listItemEl2 = document.createElement('li');
-// listItemEl2.textContent = 'Total Sold: ' + Math.floor(seaTac.dailySales);
-// ulElement2.appendChild(listItemEl2);
+//total sales function
+// ulElement = document.getElementById('seaTac');
+// listItemEl = document.createElement('li');
+// listItemEl.textContent = 'Total Sold: ' + Math.floor(seaTac.dailySales);
+// ulElement.appendChild(listItemEl);
 
 
 //SEATTLE CENTER LOCATION
@@ -135,27 +136,29 @@ seattleCenter.cookiesSales();
 seattleCenter.renderSales();
 
 //total cookies function
-// var ulElement = document.getElementById('seattleCenter');
-// var listItemEl = document.createElement('li');
+// ulElement = document.getElementById('seattleCenter');
+// listItemEl = document.createElement('li');
 // listItemEl.textContent = 'Total sold: ' + Math.floor(seattleCenter.dailySales);
 // ulElement.appendChild(listItemEl);
 
+
+//CAPITOL HILL LOCATION
 var capitolHill = {
-  minCustomers = 20,
-  maxCustomers = 38,
-  averageCookiesPerCustomer = 2.3,
+  minCustomers: 20,
+  maxCustomers: 38,
+  averageCookiesPerCustomer: 2.3,
   cookiesPerHour: [],
   customerPerHour: [],
   dailySales: 0,
 
-  randomNumber: function()
-  for(var i = 0; i < storeHours.length; i++){
-    this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+  randomNumber: function() {
+    for (var i = 0; i < storeHours.length; i++)
+      this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
   },
 
   cookieSales: function() {
     for(var i = 0; i < storeHours.length; i++){
-      var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer; 
+      var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
       this.cookiesPerHour[i] = numberSold;
       this.dailySales += numberSold;
     }
@@ -166,7 +169,7 @@ var capitolHill = {
     for(var i = 0; i < storeHours.length; i++){
       var listItemEl = document.createElement('li');
       listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
-      ulElement.appendChild(listItemEl); 
+      ulElement.appendChild(listItemEl);
     }
   }
 };
@@ -176,8 +179,8 @@ seattleCenter.renderSales();
 
 //total cookies function
 
-var ulElement = document.getElementById('capitolHill');
-var listItemEl = document.createElement('li');
-listItemEl.textContent = 'Total Sold: ' + Math.floor(capitolHill.dailySales);
-ulElement.appendChild(listItemEl);
+// ulElement = document.getElementById('capitolHill');
+// listItemEl = document.createElement('li');
+// listItemEl.textContent = 'Total Sold: ' + Math.floor(capitolHill.dailySales);
+// ulElement.appendChild(listItemEl);
 
