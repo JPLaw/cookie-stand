@@ -75,7 +75,7 @@ var seaTac = {
 
   renderSales: function() {
     // access the parent element from the DOM
-    var ulElement = document.getElementById('seaTac');
+    var ulElement2 = document.getElementById('seaTac');
     for( var i = 0; i < storeHours.length; i++) {
       // 1. create element
       var listItemEl = document.createElement('li');
@@ -83,7 +83,7 @@ var seaTac = {
       listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
       // 3. append it to the DOM
       // parentElement.appendChild(childElement);
-      ulElement.appendChild(listItemEl);
+      ulElement2.appendChild(listItemEl2);
     }
   }
 };
@@ -92,11 +92,11 @@ seaTac.randomNumber();
 seaTac.cookieSales();
 seaTac.renderSales();
 
-//total sales function
-// ulElement = document.getElementById('seaTac');
-// listItemEl = document.createElement('li');
-// listItemEl.textContent = 'Total Sold: ' + Math.floor(seaTac.dailySales);
-// ulElement.appendChild(listItemEl);
+// total sales function
+var ulElement2 = document.getElementById('seaTac');
+var listItemEl2 = document.createElement('li');
+listItemEl2.textContent = 'Total Sold: ' + Math.floor(seaTac.dailySales);
+ulElement2.appendChild(listItemEl2);
 
 
 //SEATTLE CENTER LOCATION
@@ -183,3 +183,44 @@ capitolHill.renderSales();
 // listItemEl.textContent = 'Total Sold: ' + Math.floor(capitolHill.dailySales);
 // ulElement.appendChild(listItemEl);
 
+//ALKI LOCATION
+var alki = {
+  minCustomers: 2,
+  maxCustomers: 16,
+  averageCookiesPerCustomer: 4.6,
+  cookiesPerHour: [],
+  customerPerHour: [],
+  dailySales: 0,
+
+  randomNumber: function() {
+    for (var i = 0; i < storeHours.length; i++)
+      this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+  },
+
+  cookieSales: function() {
+    for(var i = 0; i < storeHours.length; i++){
+      var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
+      this.cookiesPerHour[i] = numberSold;
+      this.dailySales += numberSold;
+    }
+  },
+
+  renderSales: function() {
+    var ulElement = document.getElementById('alki');
+    for(var i = 0; i < storeHours.length; i++){
+      var listItemEl = document.createElement('li');
+      listItemEl.textContent = storeHours[i] + ': ' + Math.round(this.cookiesPerHour[i]);
+      ulElement.appendChild(listItemEl);
+    }
+  }
+};
+alki.randomNumber();
+alki.cookieSales();
+alki.renderSales();
+
+//total cookies function
+
+// ulElement = document.getElementById('alki');
+// listItemEl = document.createElement('li');
+// listItemEl.textContent = 'Total Sold: ' + Math.floor(alki.dailySales);
+// ulElement.appendChild(listItemEl);
