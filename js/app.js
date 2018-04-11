@@ -35,6 +35,25 @@ Cookies.prototype.cookieSales = function(){
     var numberSold = Math.floor(this.randomNumber() * this.averageCookiesPerCustomer);
     this.hourlySales.push(numberSold);
   }
+
+  Cookies.prototype.totalSold = function(){
+    var cookiesSoldCalc = 0;
+    for( var i = 0; i < storeHours.length; i++){
+      cookiesSoldCalc += this.hourlySales[i];
+    }
+    this.totalSold = cookiesSoldCalc;
+  };
+
+  function storeTable(){
+    var thEl = document.createElement;
+    thEl.textContent = this.hourlySales[i];
+    storeTable.appendChild(thEl);
+  }
+
+  storeTable();
+
+function
+
 };
 
 // Cookies.prototype.cookiesPerHour= function(){
@@ -123,11 +142,11 @@ alkiLocation.cookieSales();
 // pikeAndFirst.cookieSales();
 // pikeAndFirst.renderSales();
 
-// //total cookies function
-// var ulElement = document.getElementById('pikeAndFirst');
-// var listItemEl = document.createElement('li');
-// listItemEl.textContent = 'Total Sold: ' + Math.floor(pikeAndFirst.dailySales);
-// ulElement.appendChild(listItemEl);
+//total cookies function
+var ulElement = document.getElementById('pikeAndFirst');
+var listItemEl = document.createElement('li');
+listItemEl.textContent = 'Total Sold: ' + Math.floor(pikeAndFirst.dailySales);
+ulElement.appendChild(listItemEl);
 
 
 
