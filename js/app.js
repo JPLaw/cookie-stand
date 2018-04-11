@@ -1,5 +1,7 @@
 'use strict';
 
+//var storeTable = document.getElementById('store');
+
 var storeHours = [6 + 'am', + 7 + 'am', + 8 + 'am', + 9 + 'am', + 10 + 'am', + 11 + 'am', + 12 + 'pm', + 1 + 'pm', 2 + 'pm', + 3 + 'pm', + 4 + 'pm', + 5 + 'pm', + 6 + 'pm', + 7 + 'pm', + 8 + 'pm'];
 
 //create object literal for each location
@@ -13,49 +15,57 @@ var storeHours = [6 + 'am', + 7 + 'am', + 8 + 'am', + 9 + 'am', + 10 + 'am', + 1
 //   dailySales: 0,
 // }
 
+var allStores = [];
+
 function Cookies(minCustomers, maxCustomers, averageCookiesPerCustomer, storeLocation) {
   this.minCustomers = minCustomers;
   this.maxCustomers = maxCustomers;
   this.averageCookiesPerCustomer = averageCookiesPerCustomer;
   this.dailySales = 0;
+  this.hourlySales = [];
   this.storeName = storeLocation;
+  allStores.push(this);
 }
 
-Cookies.prototype.cookieSales = function() {
-  return 'The daily sales for today are ' + this.dailySales + ' for the ' + this.storeName + ' location.' 
-};
-
 Cookies.prototype.randomNumber = function() {
-  for(var i = 0; i < storeHours.length; i++) {
-    this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
-  }
+  return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers);
 };
 
-Cookies.prototype.cookieSales = function() {
+//what I had before above changes
+// for(var i = 0; i < storeHours.length; i++) {
+//   this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
+
+
+Cookies.prototype.cookieHourlySales = function() {
   for(var i = 0; i < storeHours.length; i++){
-    var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
-    this.cookiesPerHour[i] = numberSold;
-    this.dailySales += numberSold;
+    var customerPerHour = Math.round(this.randomNumber() * this.averageCookiesPerCustomer);
+    this.hourlySales.push(customerPerHour);
   }
 };
 
 
-var pikeAndFirstLocation = new Cookies('First and Pike', 23, 65, 6.3)
-//console.log
+//what I had before above changes
+// var numberSold = this.customerPerHour[i] * this.averageCookiesPerCustomer;
+// this.cookiesPerHour[i] = numberSold;
+// this.dailySales += numberSold;
+
+
+var pikeAndFirstLocation = new Cookies('First and Pike', 23, 65, 6.3);
+
 var seattleAirportLocation = new Cookies('SeaTac Airport', 3, 24, 1.2);
-//console.log
+
 var seattleCenterLocation = new Cookies('Seattle Center', 11, 38, 3.7);
-//console.log
+
 var capitolHillLocation = new Cookies('Capitol Hill', 20, 38, 2.3);
-//console.log
+
 var alkiLocation = new Cookies('Alki', 2, 16, 4.6);
 
 
-pikeAndFirstLocation.cookieSales();
-seattleAirportLocation.cookieSales();
-seattleCenterLocation.cookieSales();
-capitolHillLocation.cookieSales();
-alkiLocation.cookieSales();
+pikeAndFirstLocation.cookieHourlySales();
+seattleAirportLocation.cookieHourlySales();
+seattleCenterLocation.cookieHourlySales();
+capitolHillLocation.cookieHourlySales();
+alkiLocation.cookieHourlySales();
 
 
 //   randomNumber: function() {
