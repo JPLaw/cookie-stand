@@ -177,22 +177,17 @@ function handleLocationFormSubmitted(event) {
   event.preventDefault();
   console.log('the form was submitted!');
   var formElement = event.target;
-  var newLocation = new Location(formElement.location.value, formElement.mincustomers.value, formElement.maxcustomers.value, formElement.averagecookiespercustomer.value);
+  var newLocation = new Cookies(formElement.location.value, formElement.mincustomers.value, formElement.maxcustomers.value, formElement.averagecookiesperhour.value);
   console.log(newLocation);
-  
+
   newLocation.randomNumber();
   newLocation.cookieSales();
   newLocation.totalSold();
   newLocation.renderRow();
-  
-  newLocation.renderRow();
 
 }
 
-// function handleLocationFormSubmitted(potato) {
-//   potato.preventDefault();
-//   console.log('the form was submitted!');
-// }
+
 var locationFormElement = document.getElementById('add-location-form');
 locationFormElement.addEventListener('submit', handleLocationFormSubmitted);
 
