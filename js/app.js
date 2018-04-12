@@ -164,7 +164,33 @@ alkiLocation.cookieSales();
 alkiLocation.totalSold();
 alkiLocation.renderRow();
 
+//*********************************************************************** */
 
+// var headerElement = document.getElementById('header');
+
+// headerElement.addEventListener('click', function() {
+//   alert('you clicked it!');
+// });
+
+function handleLocationFormSubmitted(event) {
+  // stop the page from refreshing
+  event.preventDefault();
+  console.log('the form was submitted!');
+  var formElement = event.target;
+  var newLocation = new Location(formElement.location.value, formElement.minCustomers.value, formElement.maxCustomers.value, formElement.averageCookiesPerCustomer.value);
+  console.log(newLocation);
+  newLocation.renderRow();
+  //var newDog = new Dog(formElement.name, color, breed, nickname);
+}
+
+// function handleLocationFormSubmitted(potato) {
+//   potato.preventDefault();
+//   console.log('the form was submitted!');
+// }
+var locationFormElement = document.getElementById('add-location-form');
+locationFormElement.addEventListener('submit', handleLocationFormSubmitted);
+
+//********************************************************** */
 //   randomNumber: function() {
 //     for(var i = 0; i < storeHours.length; i++) {
 //       this.customerPerHour[i] = Math.floor(Math.random() * (this.maxCustomers - this.minCustomers)) + this.minCustomers;
