@@ -6,7 +6,7 @@ var allStores = [];
 
 var tableHead = document.getElementById('table-head');
 var tableBody =  document.getElementById('table-body');
-var tableFooter = document.getElementById('table-footer');
+//var tableFooter = document.getElementById('table-footer');
 
 function Cookies(storeLocation, minCustomers, maxCustomers, averageCookiesPerCustomer) {
   this.storeLocation = storeLocation;
@@ -59,14 +59,14 @@ Cookies.prototype.cookieSales = function(){
     var numberSold = Math.floor(this.randomNumber() * this.averageCookiesPerCustomer);
     this.hourlySales.push(numberSold);
   }
-
-  Cookies.prototype.totalSold = function(){
-    var cookiesSoldCalc = 0;
-    for( var i = 0; i < storeHours.length; i++){
-      cookiesSoldCalc += this.hourlySales[i];
-    }
-    this.totalSold = cookiesSoldCalc;
-  };
+};
+Cookies.prototype.totalSold = function(){
+  var cookiesSoldCalc = 0;
+  for( var i = 0; i < storeHours.length; i++){
+    cookiesSoldCalc += this.hourlySales[i];
+  }
+  this.totalSold = cookiesSoldCalc;
+};
 
 //Write a function to create rest of table
 Cookies.prototype.renderRow = function(){
@@ -74,22 +74,28 @@ Cookies.prototype.renderRow = function(){
   var trElement = document.createElement('tr');
   //create td elemetnt
   var tdElement = document.createElement('td');
-  //give td content 
+  //give td content
   tdElement.textContent = this.storeLocation;
   //append to the row
   trElement.appendChild(tdElement);
   for(var i = 0; i < storeHours.length; i++){
     //create a td element
-    trElement = document.createElement('td');
+    tdElement = document.createElement('td');
     //give td content
     tdElement.textContent = this.hourlySales[i];
     //append it to tr
     trElement.appendChild(tdElement);
     //append row to table
     tableBody.appendChild(trElement);
-
   }
-}
+  //create a td element that will contain the totals
+  tdElement = document.createElement('td');
+  //give it content
+  tdElement.textContent = this.totalSold;
+  //append it to the row
+  trElement.appendChild(tdElement);
+  //append to table?
+};
 
 // Cookies.prototype.cookiesPerHour= function(){
 // // access the parent element from the DOM
@@ -124,26 +130,39 @@ Cookies.prototype.renderRow = function(){
 // this.dailySales += numberSold;
 
 //create instances/objects
-// var pikeAndFirstLocation = new Cookies('First and Pike', 23, 65, 6.3);
-// var seattleAirportLocation = new Cookies('SeaTac Airport', 3, 24, 1.2);
-// var seattleCenterLocation = new Cookies('Seattle Center', 11, 38, 3.7);
-// var capitolHillLocation = new Cookies('Capitol Hill', 20, 38, 2.3);
-// var alkiLocation = new Cookies('Alki', 2, 16, 4.6);
+var pikeAndFirstLocation = new Cookies('First and Pike', 23, 65, 6.3);
+var seattleAirportLocation = new Cookies('SeaTac Airport', 3, 24, 1.2);
+var seattleCenterLocation = new Cookies('Seattle Center', 11, 38, 3.7);
+var capitolHillLocation = new Cookies('Capitol Hill', 20, 38, 2.3);
+var alkiLocation = new Cookies('Alki', 2, 16, 4.6);
+
+//
+
+pikeAndFirstLocation.randomNumber();
+pikeAndFirstLocation.cookieSales();
+pikeAndFirstLocation.totalSold();
+pikeAndFirstLocation.renderRow();
+
+seattleAirportLocation.randomNumber();
+seattleAirportLocation.cookieSales();
+seattleAirportLocation.totalSold();
+seattleAirportLocation.renderRow();
 
 
-// pikeAndFirstLocation.cookieSales();
+seattleCenterLocation.randomNumber();
+seattleCenterLocation.cookieSales();
+seattleCenterLocation.totalSold();
+seattleCenterLocation.renderRow();
 
+capitolHillLocation.randomNumber();
+capitolHillLocation.cookieSales();
+capitolHillLocation.totalSold();
+capitolHillLocation.renderRow();
 
-// seattleAirportLocation.cookieSales();
-
-
-// seattleCenterLocation.cookieSales();
-
-
-// capitolHillLocation.cookieSales();
-
-
-// alkiLocation.cookieSales();
+alkiLocation.randomNumber();
+alkiLocation.cookieSales();
+alkiLocation.totalSold();
+alkiLocation.renderRow();
 
 
 //   randomNumber: function() {
@@ -358,4 +377,4 @@ Cookies.prototype.renderRow = function(){
 // ulElement = document.getElementById('alki');
 // listItemEl = document.createElement('li');
 // listItemEl.textContent = 'Total Sold: ' + Math.floor(alki.dailySales);
-// ulElement.appendChild(listItemEl);
+// ulElement.appendChild(listItemEl);}
