@@ -51,7 +51,7 @@ createHeader();
 
 
 Cookies.prototype.randomNumber = function() {
-  return Math.floor(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers);
+  return Math.floor(Math.random() * (Number(this.maxCustomers) - Number(this.minCustomers)) + Number(this.minCustomers));
 };
 
 Cookies.prototype.cookieSales = function(){
