@@ -98,7 +98,7 @@ Cookies.prototype.renderRow = function(){
 };
 
 //------------Footer-------------------
-// function renderHours() {
+// function createFooter() {
 //   var trElement = document.createElement('tr');
 //   var theadElement = document.getElementById('store');
 //   var thElement = document.createElement('th');
@@ -115,7 +115,7 @@ Cookies.prototype.renderRow = function(){
 //   theadElement.appendChild(trElement);
 // }
 
-// renderHours();
+// createFooter();
 //--------------------------------------------
 
 
