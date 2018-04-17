@@ -6,7 +6,7 @@ var allStores = [];
 
 var tableHead = document.getElementById('table-head');
 var tableBody =  document.getElementById('table-body');
-//var tableFooter = document.getElementById('table-footer');
+// var tableFooter = document.getElementById('table-footer');
 
 function Cookies(storeLocation, minCustomers, maxCustomers, averageCookiesPerCustomer) {
   this.storeLocation = storeLocation;
@@ -97,6 +97,24 @@ Cookies.prototype.renderRow = function(){
   //append to table?
 };
 
+function renderHours() {
+  var trElement = document.createElement('tr');
+  var theadElement = document.getElementById('store');
+  var thElement = document.createElement('th');
+  thElement.textContent = '';
+  trElement.appendChild(thElement);
+  for(var i = 0; i < storeHours.length; i++) {
+    thElement = document.createElement('th');
+    thElement.textContent = storeHours[i];
+    trElement.appendChild(thElement);
+  }
+  thElement = document.createElement('th');
+  thElement.textContent = 'Cookie Total';
+  trElement.appendChild(thElement);
+  theadElement.appendChild(trElement);
+}
+
+renderHours();
 // Cookies.prototype.cookiesPerHour= function(){
 // // access the parent element from the DOM
 //   var ulElement = document.getElementById('pikeAndFirst');
